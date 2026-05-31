@@ -6,6 +6,7 @@ WORKDIR /usr/local/app
 #It is a sql file to create the vagrant user
 #to be able to restore de backup withot errors
 #as the vagrant user is the owner of the objects
+
 COPY ./init-users.sql .
 
 # The bacup to restore
@@ -17,6 +18,7 @@ COPY ./disati.backup .
 # to init the database.
 # If the database has already initialized, anything is going 
 # to be executed
+COPY ./iniddb.sql /docker-entrypoint-initdb.d/01_iniddb.sql
 COPY ./init-db.sh /docker-entrypoint-initdb.d/init-db.sh
 
 # Grant execution permissions for the init-db.sh script
